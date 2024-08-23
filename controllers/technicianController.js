@@ -26,7 +26,7 @@ export const getTechnicians = async (req, res) => {
 };
 
 export const getTechnicianByEmailOrPhone = async (req, res) => {
-  const { email, phone } = req.query; // Assume we're using query parameters
+  const { email, phone } = req.query; 
 
   try {
     const technician = await Technician.findOne({ 

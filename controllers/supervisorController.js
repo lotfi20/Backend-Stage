@@ -1,4 +1,4 @@
-// controllers/supervisorController.js
+
 import Supervisor from '../models/Supervisor.js';
 
 export const createSupervisor = async (req, res) => {
@@ -21,11 +21,11 @@ export const loginSupervisor = async (req, res) => {
       return res.status(404).json({ message: 'Supervisor not found' });
     }
 
-    // Generate a token or perform other login logic
+    
     res.status(200).json({
       message: 'Login successful',
       supervisor,
-      token: 'some-generated-token', // Replace with actual token generation logic
+      token: 'some-generated-token', 
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

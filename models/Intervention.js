@@ -1,4 +1,4 @@
-// models/intervention.js
+
 
 import mongoose from 'mongoose';
 

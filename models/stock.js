@@ -1,4 +1,4 @@
-// models/stock.js
+
 
 import mongoose from 'mongoose';
 

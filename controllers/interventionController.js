@@ -1,7 +1,7 @@
 import Intervention from '../models/Intervention.js';
 import Technician from '../models/Technician.js'; 
 
-// Get all interventions or interventions for a specific technician
+
 export const getInterventions = async (req, res) => {
   try {
     const technicianId = req.query.technician;
@@ -19,7 +19,7 @@ export const getInterventions = async (req, res) => {
   }
 };
 
-// Create a new intervention
+
 export const createIntervention = async (req, res) => {
   const { client, technician, description, problemType, replacementOption, startDate, endDate, status } = req.body;
 
@@ -37,7 +37,7 @@ export const createIntervention = async (req, res) => {
   try {
     const newIntervention = await intervention.save();
 
-    // Update the technician's status
+    
     await Technician.findByIdAndUpdate(technician, { status: 'Busy' });
 
     res.status(201).json(newIntervention);
@@ -46,7 +46,7 @@ export const createIntervention = async (req, res) => {
   }
 };
 
-// Update an existing intervention
+
 export const updateIntervention = async (req, res) => {
   try {
     const intervention = await Intervention.findById(req.params.id);
@@ -62,7 +62,7 @@ export const updateIntervention = async (req, res) => {
   }
 };
 
-// Delete an intervention
+
 export const deleteIntervention = async (req, res) => {
   try {
     const intervention = await Intervention.findById(req.params.id);
@@ -77,7 +77,7 @@ export const deleteIntervention = async (req, res) => {
   }
 };
 
-// Get interventions for a specific technician
+
 export const getInterventionsForTechnician = async (req, res) => {
   try {
     const technicianId = req.params.id;

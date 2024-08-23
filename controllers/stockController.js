@@ -1,4 +1,4 @@
-// controllers/stockController.js
+
 
 import Stock from '../models/stock.js';
 

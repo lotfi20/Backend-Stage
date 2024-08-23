@@ -15,7 +15,7 @@ const SupervisorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // Add any additional fields as necessary
+  
 });
 
 const Supervisor = mongoose.model('Supervisor', SupervisorSchema);

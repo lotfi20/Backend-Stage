@@ -8,19 +8,14 @@ import session from 'express-session';
 import dotenv from 'dotenv';
 
 import userRoutes from './routes/user.js';
-import servicesRoutes from './routes/serviceSociauxRoute.js';
-import experienceRoutes from './routes/experienceRouter.js';
-import communityRoutes from './routes/communityRouter.js';
-import formationRoutes from './routes/Formations.js';
-import educationRoutes from './routes/Educations.js';
 import stockRoutes from './routes/stockRoutes.js';
 import clientRoutes from './routes/clientRoutes.js';
-import technicianRoutes from './routes/technicianRoutes.js'; // Technicians
-import interventionRoutes from './routes/interventionRoutes.js'; // Interventions
+import technicianRoutes from './routes/technicianRoutes.js';
+import interventionRoutes from './routes/interventionRoutes.js'; 
 import paymentRouter from './routes/payment-router.js';
 import supervisorRoutes from './routes/supervisorRoutes.js';
 import SoinsRoutes from './routes/stockRoutes.js';
-import opportuniteRoutes from './routes/OpportuniteRoutes.js'; // Import Opportunite routes
+
 
 import { errorHandler, notFoundError } from './middlewares/error_handler.js';
 
@@ -62,20 +57,16 @@ app.use('/gse', (req, res, next) => {
   next();
 });
 
-app.use('/api/opportunite', opportuniteRoutes);
+
 app.use('/api/supervisors', supervisorRoutes);
 app.use('/user', userRoutes);
-app.use('/service', servicesRoutes);
-app.use('/community', communityRoutes);
-app.use('/experience', experienceRoutes);
-app.use('/formation', formationRoutes);
-app.use('/education', educationRoutes);
+
 app.use('/stock', stockRoutes);
 app.use('/api/clients', clientRoutes);
 app.use('/api/technicians', technicianRoutes);
 app.use('/api/interventions', interventionRoutes);
 app.use('/payment', paymentRouter);
-app.use('/soin', SoinsRoutes); // Ensure this does not conflict with '/stock'
+app.use('/soin', SoinsRoutes); 
 
 app.get('/api/interventions/technician/:id', async (req, res) => {
   const { id } = req.params;
