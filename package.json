@@ -1,5 +1,5 @@
 {
-  "name": "pdm",
+  "name": "stage",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,7 +8,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "author": "wassim",
+  "author": "lotfi",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.2",

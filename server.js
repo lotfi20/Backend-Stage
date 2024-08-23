@@ -26,7 +26,7 @@ const io = new Server(server);
 
 // MongoDB connection
 const port = process.env.PORT || 9090;
-const databaseName = 'pdm';
+const databaseName = 'stage';
 mongoose.set('debug', true);
 mongoose.Promise = global.Promise;
 mongoose
