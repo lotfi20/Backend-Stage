@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import session from 'express-session';
 import dotenv from 'dotenv';
 
@@ -15,7 +16,7 @@ import interventionRoutes from './routes/interventionRoutes.js';
 import paymentRouter from './routes/payment-router.js';
 import supervisorRoutes from './routes/supervisorRoutes.js';
 import SoinsRoutes from './routes/stockRoutes.js';
-
+import announcementRoutes from './routes/announcementRoutes.js';
 
 import { errorHandler, notFoundError } from './middlewares/error_handler.js';
 
@@ -32,6 +33,7 @@ mongoose.Promise = global.Promise;
 mongoose
   .connect(`mongodb://0.0.0.0:27017/${databaseName}`)
   .then(() => {
+    
     console.log(`Connected to ${databaseName}`);
   })
   .catch((err) => {
@@ -67,7 +69,7 @@ app.use('/api/technicians', technicianRoutes);
 app.use('/api/interventions', interventionRoutes);
 app.use('/payment', paymentRouter);
 app.use('/soin', SoinsRoutes); 
-
+app.use('/api/announcements', announcementRoutes);
 app.get('/api/interventions/technician/:id', async (req, res) => {
   const { id } = req.params;
 
