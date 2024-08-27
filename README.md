@@ -1,6 +1,7 @@
 # stage
 Pour mettre à jour et redémarrer le projet, exécutez les commandes suivantes :
-npm i  
-npm uninstall bcrypt
-npm install bcrypt  
-npm run dev  
+
+1)npm i  
+2)npm uninstall bcrypt
+3)npm install bcrypt  
+4)npm run dev  
