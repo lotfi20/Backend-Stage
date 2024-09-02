@@ -74,7 +74,7 @@ app.get('/api/interventions/technician/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const interventions = await Intervention.find({ technician: id });
+    const interventions = await interventions.find({ technician: id });
     res.json(interventions);
   } catch (err) {
     res.status(500).json({ message: err.message });

@@ -11,13 +11,43 @@ export const getClients = async (req, res) => {
 };
 
 export const createClient = async (req, res) => {
-  const client = new Client(req.body);
-
   try {
+    const existingClient = await Client.findOne({ email: req.body.email });
+    if (existingClient) {
+      return res.status(400).json({ message: 'Client with this email already exists' });
+    }
+
+    const client = new Client(req.body);
     const newClient = await client.save();
     res.status(201).json(newClient);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Error creating client:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+
+
+export const signupClient = async (req, res) => {
+  const { email, phone, name } = req.body; // Assuming password is required for signup
+
+  try {
+    // Check if the client already exists
+    const existingClient = await Client.findOne({ email });
+    if (existingClient) {
+      return res.status(400).json({ message: 'Client already exists' });
+    }
+
+    // Create a new client
+    const newClient = new Client({ name,email, phone});
+    await newClient.save();
+
+    // Generate a token
+    const token = jwt.sign({ id: newClient._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(201).json({ token, client: newClient });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
